@@ -102,3 +102,4 @@ void Graph::ChangeToIncidenceMatrix()
 	else if(m_representation=='i')
 		std::cout<<"Graph is already represented by an incidence matrix."<<std::endl;
 }
+
