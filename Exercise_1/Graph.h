@@ -10,7 +10,18 @@ public:
 	Graph(std::vector<std::vector<int>> inputFromFile, char typeOfRepresentation);
 	void PrintGraph(std::ostream& placeToPrint) const ;
 	char GetRepresentation() const;
-
+	// Funkcja zamieniajaca liste sasiedztwa na macierz incydencji. Tworzy macierz o wymiarze l.wierzchołków x l.krawedzi, wypełnia zerami.
+	// Uzupełnia kolejno kolumny macierzy. Każda kolumna reprezentuje osobna krawedz.
+	void ChangeAdjacencyListToIncidenceMatrix();
+	// Funkcja zamieniajaca macierz sasiedztwa na macierz incydencji. Tworzy macierz o wymiarze l.wierzchołków x l.krawedzi, wypełnia zerami.
+	// Uzupełnia kolejno kolumumny macierzy. Sprawdza pomiędzy którymi wierzchołkami istnieje krawędź. Każda krawędź to osobna kolumna.
+	void ChangeAdjacencyMatrixToIncidenceMatrix();
+	// Funkcja dla każdej reprezentacji grafu zlicza ilosc krawedzi i zwraca ja.
+	int EdgesCounter() const;
+	// Funkcja zamieniajaca reprezentacje grafu przechowywana przez obiekt klasy Graph na macierz incydencji. W zaleznosci w jakiej
+	// reprezentacji jest graf funkcja wywoluje inna funkcje zamieniajaca, lub wypisuje informacje ze graf jest juz
+	// w tej reprezentacji. 
+	void ChangeToIncidenceMatrix();
 	/// TODO: Funkcja zamieniajaca na macierz incydencji - wywoluje jedna z dwoch funkcji, zaleznie od aktualnej reprezentacji, j
 	///			jesli juz jest macierz incydencji - wypisuje komunikat, nie robi nic
 

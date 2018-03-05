@@ -16,9 +16,7 @@ int main()
 	}while (!isFileValid);
 
 	storedGraph->PrintGraph(std::cout);
-
-
-
+	
 	Output outputFile;
 	outputFile.SaveToFile(storedGraph);
 	return 0;
