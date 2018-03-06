@@ -103,3 +103,19 @@ void Graph::ChangeToIncidenceMatrix()
 		std::cout<<"Graph is already represented by an incidence matrix."<<std::endl;
 }
 
+void Graph::AskUserAboutChange()
+{
+	char newRepresentation;
+	std::cout<<"In which representation you want to have your graph?"<<std::endl;
+	std::cout<<"Options: \nl - adjacency list \na - adjacency matrix \ni - incidence matrix"<<std::endl;
+	std::cin>>newRepresentation;
+	if(newRepresentation=='l');
+		//wywolanie funkcji zmieniajacej na liste sasiedztwa (funkcja Piotrka)
+	else if(newRepresentation=='a');
+		//wywolanie funkcji zmieniajacej na macierz sasiedztwa (funckja Piotrka)
+	else if(newRepresentation=='i')
+		ChangeToIncidenceMatrix();
+	else
+		std::cout<<"Wrong option."<<std::endl;
+}
+

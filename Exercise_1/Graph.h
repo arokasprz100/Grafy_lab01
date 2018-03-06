@@ -22,6 +22,8 @@ public:
 	// reprezentacji jest graf funkcja wywoluje inna funkcje zamieniajaca, lub wypisuje informacje ze graf jest juz
 	// w tej reprezentacji. 
 	void ChangeToIncidenceMatrix();
+	// Funkcja pytajaca uzytkownika na jaka reprezentacje chce zamienic graf i wywolujaca odpowiednia funkcje.
+	void AskUserAboutChange();
 	/// TODO: Funkcja zamieniajaca na macierz incydencji - wywoluje jedna z dwoch funkcji, zaleznie od aktualnej reprezentacji, j
 	///			jesli juz jest macierz incydencji - wypisuje komunikat, nie robi nic
 
