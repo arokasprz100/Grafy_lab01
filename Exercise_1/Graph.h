@@ -16,12 +16,28 @@ public:
 	// Funkcja zamieniajaca macierz sasiedztwa na macierz incydencji. Tworzy macierz o wymiarze l.wierzchołków x l.krawedzi, wypełnia zerami.
 	// Uzupełnia kolejno kolumumny macierzy. Sprawdza pomiędzy którymi wierzchołkami istnieje krawędź. Każda krawędź to osobna kolumna.
 	void ChangeAdjacencyMatrixToIncidenceMatrix();
+	//
+	void ChangeIncidenceMatrixToAdjacencyMatrix();
+	//
+	void ChangeAdjacencyListToAdjacencyMatrix();
+	//
+	void ChangeAdjacencyMatrixToAdjacencyList();
+	//
+	void ChangeInicidenceMatrixToAdjacencyList();
 	// Funkcja dla każdej reprezentacji grafu zlicza ilosc krawedzi i zwraca ja.
 	int EdgesCounter() const;
 	// Funkcja zamieniajaca reprezentacje grafu przechowywana przez obiekt klasy Graph na macierz incydencji. W zaleznosci w jakiej
 	// reprezentacji jest graf funkcja wywoluje inna funkcje zamieniajaca, lub wypisuje informacje ze graf jest juz
 	// w tej reprezentacji. 
 	void ChangeToIncidenceMatrix();
+	// Funkcja zamieniajaca reprezentacje grafu przechowywana przez obiekt klasy Graph na macierz sąsiedztwa. W zaleznosci w jakiej
+	// reprezentacji jest graf funkcja wywoluje inna funkcje zamieniajaca, lub wypisuje informacje ze graf jest juz
+	// w tej reprezentacji. 
+	void ChangeToAdjacencyMatrix();
+	// Funkcja zamieniajaca reprezentacje grafu przechowywana przez obiekt klasy Graph na listę sąsiedztwa. W zaleznosci w jakiej
+	// reprezentacji jest graf funkcja wywoluje inna funkcje zamieniajaca, lub wypisuje informacje ze graf jest juz
+	// w tej reprezentacji. 
+	void ChangeToAdjacencyList();
 	// Funkcja pytajaca uzytkownika na jaka reprezentacje chce zamienic graf i wywolujaca odpowiednia funkcje.
 	void AskUserAboutChange();
 	/// TODO: Funkcja zamieniajaca na macierz incydencji - wywoluje jedna z dwoch funkcji, zaleznie od aktualnej reprezentacji, j
