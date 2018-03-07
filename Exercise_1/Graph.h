@@ -18,9 +18,11 @@ public:
 	void ChangeAdjacencyMatrixToIncidenceMatrix();
 	//
 	void ChangeIncidenceMatrixToAdjacencyMatrix();
-	//
+	// Funkcja zamieniajaca macierz sasiedztwa na liste sasiedztwa. Tworzy macierz o wymiarze l.wierzcholkow x l.wierzcholkow, wypelnia zerami.
+	// Odczutej kolejno numer sasiada i zgodnie z jego numerem zapisuje go w macierzy na odowiedniej pozycji.
 	void ChangeAdjacencyListToAdjacencyMatrix();
-	//
+	// Funkcja zamieniajaca macierz sasiedztwa na liste sasiedztwa. Tworzy macierz o wymiarze l.wierzcholkow x l.wierzcholkow, wypelnia zerami.
+	// Przepisuje kolejno numery sasiadujacych wiercholkow. Usuwa na koncu pola w macierzy zawierajace wartosc 0.
 	void ChangeAdjacencyMatrixToAdjacencyList();
 	//
 	void ChangeInicidenceMatrixToAdjacencyList();
