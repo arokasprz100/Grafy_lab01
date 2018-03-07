@@ -16,7 +16,8 @@ public:
 	// Funkcja zamieniajaca macierz sasiedztwa na macierz incydencji. Tworzy macierz o wymiarze l.wierzchołków x l.krawedzi, wypełnia zerami.
 	// Uzupełnia kolejno kolumumny macierzy. Sprawdza pomiędzy którymi wierzchołkami istnieje krawędź. Każda krawędź to osobna kolumna.
 	void ChangeAdjacencyMatrixToIncidenceMatrix();
-	//
+	// Funkcja zamieniajaca macierz incydencji na liste sasiedztwa. Tworzy macierz o wymiarze l.wierzcholkow x l.wierzcholkow, wypelnia zerami.
+	// Sprawdza czy dla danego wierzchołka istnieje krawędź, jesli tak to poszukuje pozostałe wierzchołki przynależące do danej krawędzi.
 	void ChangeIncidenceMatrixToAdjacencyMatrix();
 	// Funkcja zamieniajaca macierz sasiedztwa na liste sasiedztwa. Tworzy macierz o wymiarze l.wierzcholkow x l.wierzcholkow, wypelnia zerami.
 	// Odczutej kolejno numer sasiada i zgodnie z jego numerem zapisuje go w macierzy na odowiedniej pozycji.
@@ -24,7 +25,8 @@ public:
 	// Funkcja zamieniajaca macierz sasiedztwa na liste sasiedztwa. Tworzy macierz o wymiarze l.wierzcholkow x l.wierzcholkow, wypelnia zerami.
 	// Przepisuje kolejno numery sasiadujacych wiercholkow. Usuwa na koncu pola w macierzy zawierajace wartosc 0.
 	void ChangeAdjacencyMatrixToAdjacencyList();
-	//
+	// Funkcja korzysta z funkcji zmieniającej macierz incydencji na macierz sąsiedztwa, nastęnie korzysta z funckji zamiany macierzy 
+	// sąsiedztwa na listę sąsiedztwa.
 	void ChangeInicidenceMatrixToAdjacencyList();
 	// Funkcja dla każdej reprezentacji grafu zlicza ilosc krawedzi i zwraca ja.
 	int EdgesCounter() const;
