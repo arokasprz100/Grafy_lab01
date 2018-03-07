@@ -150,9 +150,9 @@ void Graph::AskUserAboutChange()
 	std::cout<<"In which representation you want to have your graph?"<<std::endl;
 	std::cout<<"Options: \nl - adjacency list \na - adjacency matrix \ni - incidence matrix"<<std::endl;
 	std::cin>>newRepresentation;
-	if(newRepresentation=='l');
+	if(newRepresentation=='l')
 		ChangeToAdjacencyList();
-	else if(newRepresentation=='a');
+	else if(newRepresentation=='a')
 		ChangeToAdjacencyMatrix();
 	else if(newRepresentation=='i')
 		ChangeToIncidenceMatrix();
