@@ -70,7 +70,27 @@ void Graph::ChangeAdjacencyMatrixToIncidenceMatrix()
 
 void Graph::ChangeIncidenceMatrixToAdjacencyMatrix()
 {
+	std::vector<std::vector<int>> adjacencyMatrix(m_storedRepresentation.size(), std::vector<int>(m_storedRepresentation.size(), 0));
+	if(m_representation == 'i')
+	{
+		for (unsigned i = 0; i < m_storedRepresentation.size(); ++i)
+		{
+			for (unsigned j = 0; j < m_storedRepresentation.at(i).size(); ++j)
+			{
+				if (m_storedRepresentation[i][j] == 1)
+				{
+					for (unsigned k = 0; k < m_storedRepresentation.size(); ++k)
+					{
+						if((m_storedRepresentation[k][j] == 1) && (k != i))
+							adjacencyMatrix[i][k] = 1;
+					}
+				}
+			}
+		}
+	}
 
+	m_storedRepresentation=adjacencyMatrix;
+	m_representation='a';	
 }
 	
 void Graph::ChangeAdjacencyListToAdjacencyMatrix()
@@ -112,7 +132,7 @@ void Graph::ChangeAdjacencyMatrixToAdjacencyList()
 		}
 		for (unsigned i = 0; i < m_storedRepresentation.size(); ++i)
 		{
-			 for (unsigned j = 0; j < m_storedRepresentation.at(i).size(); --j)
+			 for (unsigned j = 0; j < m_storedRepresentation.at(i).size(); ++j)
 			{
 				if(adjacencyList[i][j] == 0)
 				{
@@ -128,7 +148,8 @@ void Graph::ChangeAdjacencyMatrixToAdjacencyList()
 
 void Graph::ChangeInicidenceMatrixToAdjacencyList()
 {
-
+	ChangeIncidenceMatrixToAdjacencyMatrix();
+	ChangeAdjacencyMatrixToAdjacencyList();
 }
 
 int Graph::EdgesCounter() const
