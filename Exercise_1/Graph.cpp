@@ -68,6 +68,26 @@ void Graph::ChangeAdjacencyMatrixToIncidenceMatrix()
 
 }
 
+void Graph::ChangeIncidenceMatrixToAdjacencyMatrix()
+{
+
+}
+	
+void Graph::ChangeAdjacencyListToAdjacencyMatrix()
+{
+
+}
+
+void Graph::ChangeAdjacencyMatrixToAdjacencyList()
+{
+
+}
+
+void Graph::ChangeInicidenceMatrixToAdjacencyList()
+{
+
+}
+
 int Graph::EdgesCounter() const
 {
 	int edges=0;
@@ -103,6 +123,27 @@ void Graph::ChangeToIncidenceMatrix()
 		std::cout<<"Graph is already represented by an incidence matrix."<<std::endl;
 }
 
+void Graph::ChangeToAdjacencyMatrix()
+{
+	if(m_representation=='l')
+		ChangeAdjacencyListToAdjacencyMatrix();
+	else if(m_representation=='a')
+		std::cout<<"Graph is already represented by an adjacency matrix."<<std::endl;
+	else if(m_representation=='i')
+		ChangeIncidenceMatrixToAdjacencyMatrix();
+
+}
+	
+void Graph::ChangeToAdjacencyList()
+{
+	if(m_representation=='l')
+		std::cout<<"Graph is already represented by an adjacency list."<<std::endl;
+	else if(m_representation=='a')
+		ChangeAdjacencyMatrixToAdjacencyList();
+	else if(m_representation=='i')
+		ChangeInicidenceMatrixToAdjacencyList();
+}
+
 void Graph::AskUserAboutChange()
 {
 	char newRepresentation;
@@ -110,9 +151,9 @@ void Graph::AskUserAboutChange()
 	std::cout<<"Options: \nl - adjacency list \na - adjacency matrix \ni - incidence matrix"<<std::endl;
 	std::cin>>newRepresentation;
 	if(newRepresentation=='l');
-		//wywolanie funkcji zmieniajacej na liste sasiedztwa (funkcja Piotrka)
+		ChangeToAdjacencyList();
 	else if(newRepresentation=='a');
-		//wywolanie funkcji zmieniajacej na macierz sasiedztwa (funckja Piotrka)
+		ChangeToAdjacencyMatrix();
 	else if(newRepresentation=='i')
 		ChangeToIncidenceMatrix();
 	else
