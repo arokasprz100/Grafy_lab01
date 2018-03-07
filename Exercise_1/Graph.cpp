@@ -75,12 +75,55 @@ void Graph::ChangeIncidenceMatrixToAdjacencyMatrix()
 	
 void Graph::ChangeAdjacencyListToAdjacencyMatrix()
 {
-
+	std::vector<std::vector<int>> adjacencyMatrix(m_storedRepresentation.size(), std::vector<int>(m_storedRepresentation.size(), 0));
+	if(m_representation == 'l')
+	{
+		for (unsigned i = 0; i < m_storedRepresentation.size(); ++i)
+		{
+			for (unsigned j = 0; j < m_storedRepresentation.at(i).size(); ++j)
+			{
+				if(m_storedRepresentation[i][j] != 0)
+				{
+					adjacencyMatrix[i][m_storedRepresentation[i][j]-1] = 1;
+				}
+			}		
+		}			
+	}
+	m_storedRepresentation=adjacencyMatrix;
+	m_representation='a';
 }
 
 void Graph::ChangeAdjacencyMatrixToAdjacencyList()
 {
-
+	std::vector<std::vector<int>> adjacencyList(m_storedRepresentation.size(), std::vector<int>(m_storedRepresentation.size(), 0));
+	int counter;
+	if(m_representation == 'a'){
+		for (unsigned i = 0; i < m_storedRepresentation.size(); ++i)
+		{
+			counter = 0;
+			for (unsigned j = 0; j < m_storedRepresentation.at(i).size(); ++j)
+			{
+				if(m_storedRepresentation[i][j] == 1)
+				{
+					adjacencyList[i][counter] = j+1;
+					counter++;
+				}
+			}
+		}
+		for (unsigned i = 0; i < m_storedRepresentation.size(); ++i)
+		{
+			 for (unsigned j = 0; j < m_storedRepresentation.at(i).size(); --j)
+			{
+				if(adjacencyList[i][j] == 0)
+				{
+					adjacencyList.at(i).erase(adjacencyList.at(i).begin()+j, adjacencyList.at(i).size());
+					break;
+				}
+			}
+		}
+	}
+	m_storedRepresentation=adjacencyList;
+	m_representation='l';
 }
 
 void Graph::ChangeInicidenceMatrixToAdjacencyList()
