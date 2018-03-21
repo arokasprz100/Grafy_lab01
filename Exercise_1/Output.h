@@ -23,8 +23,10 @@ private:
 	/// Function that creates and opens output file, where graph will be saves
 	void OpenFile();
 
-
+	/// Field storing name of output file
 	std::string m_fileName;
+
+	/// Field for storing output file data
 	std::ofstream m_outputFile;
 };
 

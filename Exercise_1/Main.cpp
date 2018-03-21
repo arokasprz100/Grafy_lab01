@@ -2,7 +2,6 @@
 
 #include "Main.h"
 
-/// TODO: Arek finish, add changing options
 int main()
 {
 	GraphStorage storedGraph;
@@ -15,8 +14,13 @@ int main()
 
 	}while (!isFileValid);
 
+
 	storedGraph->PrintGraph(std::cout);
 	
+	while (storedGraph->AskUserAboutChange()){
+		storedGraph->PrintGraph(std::cout);
+	}
+
 	Output outputFile;
 	outputFile.SaveToFile(storedGraph);
 	return 0;

@@ -6,7 +6,13 @@ GraphStorage::GraphStorage():
 
 void GraphStorage::AddGraphToStorage(std::vector<std::vector<int>> inputFromFile, char typeOfRepresentation)
 {
-	m_storedGraph = new Graph(inputFromFile, typeOfRepresentation);
+	m_storedGraph = new SimpleGraph(inputFromFile, typeOfRepresentation);
+}
+
+
+SimpleGraph* GraphStorage::operator-> ()
+{
+	return m_storedGraph;
 }
 
 GraphStorage::~GraphStorage()
@@ -15,8 +21,4 @@ GraphStorage::~GraphStorage()
 		delete m_storedGraph;
 }
 
-Graph* GraphStorage::operator-> ()
-{
-	return m_storedGraph;
-}
 

@@ -1,12 +1,12 @@
-#include "Graph.h"
+#include "SimpleGraph.h"
 
-Graph::Graph(std::vector<std::vector<int>> inputFromFile, char typeOfRepresentation)
+SimpleGraph::SimpleGraph(std::vector<std::vector<int>> inputFromFile, char typeOfRepresentation)
 {
 	m_storedRepresentation = inputFromFile;
 	m_representation = typeOfRepresentation;
 }
 
-void Graph::PrintGraph(std::ostream& placeToPrint) const 
+void SimpleGraph::PrintGraph(std::ostream& placeToPrint) const 
 {
 	for (unsigned i = 0; i < m_storedRepresentation.size(); ++i)
 	{
@@ -16,12 +16,12 @@ void Graph::PrintGraph(std::ostream& placeToPrint) const
 	}
 }
 
-char Graph::GetRepresentation() const
+char SimpleGraph::GetRepresentation() const
 {
 	return m_representation;
 }
 
-void Graph::ChangeAdjacencyListToIncidenceMatrix()
+void SimpleGraph::ChangeAdjacencyListToIncidenceMatrix()
 {
 	std::vector<std::vector<int>> incidenceMatrix(m_storedRepresentation.size(), std::vector<int>(EdgesCounter(), 0));
 	int counter=0;
@@ -44,7 +44,7 @@ void Graph::ChangeAdjacencyListToIncidenceMatrix()
 	m_representation='i';
 }
 
-void Graph::ChangeAdjacencyMatrixToIncidenceMatrix()
+void SimpleGraph::ChangeAdjacencyMatrixToIncidenceMatrix()
 {
 	std::vector<std::vector<int>> incidenceMatrix(m_storedRepresentation.size(), std::vector<int>(EdgesCounter(), 0));
 	int counter=0;
@@ -68,7 +68,7 @@ void Graph::ChangeAdjacencyMatrixToIncidenceMatrix()
 
 }
 
-void Graph::ChangeIncidenceMatrixToAdjacencyMatrix()
+void SimpleGraph::ChangeIncidenceMatrixToAdjacencyMatrix()
 {
 	std::vector<std::vector<int>> adjacencyMatrix(m_storedRepresentation.size(), std::vector<int>(m_storedRepresentation.size(), 0));
 	if(m_representation == 'i')
@@ -93,7 +93,7 @@ void Graph::ChangeIncidenceMatrixToAdjacencyMatrix()
 	m_representation='a';	
 }
 	
-void Graph::ChangeAdjacencyListToAdjacencyMatrix()
+void SimpleGraph::ChangeAdjacencyListToAdjacencyMatrix()
 {
 	std::vector<std::vector<int>> adjacencyMatrix(m_storedRepresentation.size(), std::vector<int>(m_storedRepresentation.size(), 0));
 	if(m_representation == 'l')
@@ -113,7 +113,7 @@ void Graph::ChangeAdjacencyListToAdjacencyMatrix()
 	m_representation='a';
 }
 
-void Graph::ChangeAdjacencyMatrixToAdjacencyList()
+void SimpleGraph::ChangeAdjacencyMatrixToAdjacencyList()
 {
 	std::vector<std::vector<int>> adjacencyList(m_storedRepresentation.size(), std::vector<int>(m_storedRepresentation.size(), 0));
 	int counter;
@@ -136,7 +136,7 @@ void Graph::ChangeAdjacencyMatrixToAdjacencyList()
 			{
 				if(adjacencyList[i][j] == 0)
 				{
-					adjacencyList.at(i).erase(adjacencyList.at(i).begin()+j, adjacencyList.at(i).size());
+					adjacencyList.at(i).erase(adjacencyList.at(i).begin()+j, adjacencyList.at(i).end());
 					break;
 				}
 			}
@@ -146,13 +146,13 @@ void Graph::ChangeAdjacencyMatrixToAdjacencyList()
 	m_representation='l';
 }
 
-void Graph::ChangeInicidenceMatrixToAdjacencyList()
+void SimpleGraph::ChangeInicidenceMatrixToAdjacencyList()
 {
 	ChangeIncidenceMatrixToAdjacencyMatrix();
 	ChangeAdjacencyMatrixToAdjacencyList();
 }
 
-int Graph::EdgesCounter() const
+int SimpleGraph::EdgesCounter() const
 {
 	int edges=0;
 	if(m_representation=='l')
@@ -177,7 +177,7 @@ int Graph::EdgesCounter() const
 	return edges;
 }
 
-void Graph::ChangeToIncidenceMatrix()
+void SimpleGraph::ChangeToIncidenceMatrix()
 {
 	if(m_representation=='l')
 		ChangeAdjacencyListToIncidenceMatrix();
@@ -187,7 +187,7 @@ void Graph::ChangeToIncidenceMatrix()
 		std::cout<<"Graph is already represented by an incidence matrix."<<std::endl;
 }
 
-void Graph::ChangeToAdjacencyMatrix()
+void SimpleGraph::ChangeToAdjacencyMatrix()
 {
 	if(m_representation=='l')
 		ChangeAdjacencyListToAdjacencyMatrix();
@@ -198,7 +198,7 @@ void Graph::ChangeToAdjacencyMatrix()
 
 }
 	
-void Graph::ChangeToAdjacencyList()
+void SimpleGraph::ChangeToAdjacencyList()
 {
 	if(m_representation=='l')
 		std::cout<<"Graph is already represented by an adjacency list."<<std::endl;
@@ -208,11 +208,11 @@ void Graph::ChangeToAdjacencyList()
 		ChangeInicidenceMatrixToAdjacencyList();
 }
 
-void Graph::AskUserAboutChange()
+bool SimpleGraph::AskUserAboutChange()
 {
 	char newRepresentation;
 	std::cout<<"In which representation you want to have your graph?"<<std::endl;
-	std::cout<<"Options: \nl - adjacency list \na - adjacency matrix \ni - incidence matrix"<<std::endl;
+	std::cout<<"Options: \nl - adjacency list \na - adjacency matrix \ni - incidence matrix \ne - exit "<<std::endl;
 	std::cin>>newRepresentation;
 	if(newRepresentation=='l')
 		ChangeToAdjacencyList();
@@ -220,7 +220,11 @@ void Graph::AskUserAboutChange()
 		ChangeToAdjacencyMatrix();
 	else if(newRepresentation=='i')
 		ChangeToIncidenceMatrix();
+	else if (newRepresentation=='e')
+		return false;
 	else
 		std::cout<<"Wrong option."<<std::endl;
+
+	return true;
 }
 
