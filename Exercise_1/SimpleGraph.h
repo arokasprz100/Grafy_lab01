@@ -44,7 +44,7 @@ public:
 	
 	//
 	//
-	void GenerateRandomGraphBasedOnProbability();
+	void GenerateRandomGraphBasedOnProbability(int vecrticesNumber, int probability);
 
 
 private:
