@@ -1,5 +1,8 @@
 #include "SimpleGraph.h"
 
+#include <stdlib.h>     
+#include <time.h>  
+
 SimpleGraph::SimpleGraph(std::vector<std::vector<int>> inputFromFile, char typeOfRepresentation)
 {
 	m_storedRepresentation = inputFromFile;
@@ -228,3 +231,30 @@ bool SimpleGraph::AskUserAboutChange()
 	return true;
 }
 
+void GenerateRandomGraphBasedOnProbability(int vecrticesNumber, int probability)
+{
+	srand (time(NULL));
+	int randomNumber;
+	std::vector<std::vector<int>> adjacencyMatrix(verticesNumber, std::vector<int>(verticesNumber, 0));
+	
+	for (unsigned i = 0; i < vecrticesNumber; ++i)
+	{
+		for (unsigned j = i; j < vecrticesNumber; ++j)
+		{
+			randomNumber = rand() % 100 + 1;
+			if(randomNumber <= probability)
+			{
+				adjacencyMatrix[i][j] = 1;
+				adjacencyMatrix[j][i] = 1;
+			}
+			else
+			{
+				adjacencyMatrix[i][j] = 0;
+				adjacencyMatrix[i][j] = 0;
+			}
+		}
+	}
+	
+	m_storedRepresentation=adjacencyList;
+	m_representation='a';
+}
