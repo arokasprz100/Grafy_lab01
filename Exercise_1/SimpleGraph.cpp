@@ -228,3 +228,52 @@ bool SimpleGraph::AskUserAboutChange()
 	return true;
 }
 
+void SimpleGraph::GenerateRandomGraphBasedOnDensity(int verticesNumber, double density)
+{
+	srand (time(NULL));
+	std::vector<std::vector<int>> adjacencyMatrix(verticesNumber, std::vector<int>(verticesNumber, 0));
+
+	int maxEdges = verticesNumber*(verticesNumber-1)/2;
+	if(density<0)
+		density = -density;
+	 if (density<1)
+    {
+    	for(int i=0; i<verticesNumber; i++)
+        {
+            for(int j=i+1; j<verticesNumber; j++)
+            {
+            	double probability=(double)(std::rand()%(maxEdges+1))/(double)maxEdges;
+            	if(density>=probability)
+            	{
+            		adjacencyMatrix[i][j] = 1;
+					adjacencyMatrix[j][i] = 1;
+            	}
+            }
+        }
+    }
+    else
+    {
+    	int edgesNumber=density;
+    	if (edgesNumber>maxEdges) 
+    		edgesNumber=maxEdges;
+    	while(edgesNumber>0)
+    	{
+    		for(int i=0; i<verticesNumber; i++)
+	        {
+	            for(int j=i+1; j<verticesNumber; j++)
+	            {
+	            	double probability=(double)(std::rand()%(maxEdges+1))/(double)maxEdges;
+	            	double rest=((double)maxEdges-edgesNumber)/(double)maxEdges;
+	            	if(probability>=rest && adjacencyMatrix[i][j] == 0)
+	            	{
+	            		adjacencyMatrix[i][j] = 1;
+						adjacencyMatrix[j][i] = 1;
+						edgesNumber--;
+	            	}
+	            }
+	        }
+    	}
+    }
+    m_storedRepresentation=adjacencyMatrix;
+	m_representation='a';
+}

@@ -46,6 +46,10 @@ public:
 	//
 	void GenerateRandomGraphBasedOnProbability(int vecrticesNumber, int probability);
 
+	// Funkcja generujaca graf losowy G(n, l) o zadanej liczbie wierzcholkow oraz gestosci. Jeśli drugi argument jest liczba
+	// ujemna zamieniamy ja na dodatnia, jesli jest mniejszy od 1 traktujemy go jako gestosc (jaka czesc maksymalnej liczby
+	// krawedzi ma sie znalezc w grafie), jesli wiekszy od 1 traktujemy go jako ilosc krawedzi.
+	void GenerateRandomGraphBasedOnDensity(int verticesNumber, double density);
 
 private:
 
@@ -89,5 +93,6 @@ private:
 	char m_representation;
 
 };
+
 
 #endif
