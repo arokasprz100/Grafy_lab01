@@ -92,7 +92,7 @@ void SimpleGraph::ChangeIncidenceMatrixToAdjacencyMatrix()
 	m_storedRepresentation=adjacencyMatrix;
 	m_representation='a';	
 }
-	
+
 void SimpleGraph::ChangeAdjacencyListToAdjacencyMatrix()
 {
 	std::vector<std::vector<int>> adjacencyMatrix(m_storedRepresentation.size(), std::vector<int>(m_storedRepresentation.size(), 0));
@@ -132,7 +132,7 @@ void SimpleGraph::ChangeAdjacencyMatrixToAdjacencyList()
 		}
 		for (unsigned i = 0; i < m_storedRepresentation.size(); ++i)
 		{
-			 for (unsigned j = 0; j < m_storedRepresentation.at(i).size(); ++j)
+			for (unsigned j = 0; j < m_storedRepresentation.at(i).size(); ++j)
 			{
 				if(adjacencyList[i][j] == 0)
 				{
@@ -197,7 +197,7 @@ void SimpleGraph::ChangeToAdjacencyMatrix()
 		ChangeIncidenceMatrixToAdjacencyMatrix();
 
 }
-	
+
 void SimpleGraph::ChangeToAdjacencyList()
 {
 	if(m_representation=='l')
@@ -236,44 +236,44 @@ void SimpleGraph::GenerateRandomGraphBasedOnDensity(int verticesNumber, double d
 	int maxEdges = verticesNumber*(verticesNumber-1)/2;
 	if(density<0)
 		density = -density;
-	 if (density<1)
-    {
-    	for(int i=0; i<verticesNumber; i++)
-        {
-            for(int j=i+1; j<verticesNumber; j++)
-            {
-            	double probability=(double)(std::rand()%(maxEdges+1))/(double)maxEdges;
-            	if(density>=probability)
-            	{
-            		adjacencyMatrix[i][j] = 1;
+	if (density<1)
+	{
+		for(int i=0; i<verticesNumber; i++)
+		{
+			for(int j=i+1; j<verticesNumber; j++)
+			{
+				double probability=(double)(std::rand()%(maxEdges+1))/(double)maxEdges;
+				if(density>=probability)
+				{
+					adjacencyMatrix[i][j] = 1;
 					adjacencyMatrix[j][i] = 1;
-            	}
-            }
-        }
-    }
-    else
-    {
-    	int edgesNumber=density;
-    	if (edgesNumber>maxEdges) 
-    		edgesNumber=maxEdges;
-    	while(edgesNumber>0)
-    	{
-    		for(int i=0; i<verticesNumber; i++)
-	        {
-	            for(int j=i+1; j<verticesNumber; j++)
-	            {
-	            	double probability=(double)(std::rand()%(maxEdges+1))/(double)maxEdges;
-	            	double rest=((double)maxEdges-edgesNumber)/(double)maxEdges;
-	            	if(probability>=rest && adjacencyMatrix[i][j] == 0)
-	            	{
-	            		adjacencyMatrix[i][j] = 1;
+				}
+			}
+		}
+	}
+	else
+	{
+		int edgesNumber=density;
+		if (edgesNumber>maxEdges) 
+			edgesNumber=maxEdges;
+		while(edgesNumber>0)
+		{
+			for(int i=0; i<verticesNumber; i++)
+			{
+				for(int j=i+1; j<verticesNumber; j++)
+				{
+					double probability=(double)(std::rand()%(maxEdges+1))/(double)maxEdges;
+					double rest=((double)maxEdges-edgesNumber)/(double)maxEdges;
+					if(probability>=rest && adjacencyMatrix[i][j] == 0)
+					{
+						adjacencyMatrix[i][j] = 1;
 						adjacencyMatrix[j][i] = 1;
 						edgesNumber--;
-	            	}
-	            }
-	        }
-    	}
-    }
-    m_storedRepresentation=adjacencyMatrix;
+					}
+				}
+			}
+		}
+	}
+	m_storedRepresentation=adjacencyMatrix;
 	m_representation='a';
 }
