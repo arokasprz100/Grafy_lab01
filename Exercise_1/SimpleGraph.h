@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <iostream>
-
+     
 class SimpleGraph final  
 {
 public:
@@ -41,6 +41,10 @@ public:
 	// Funkcja pytajaca uzytkownika na jaka reprezentacje chce zamienic graf i wywolujaca odpowiednia funkcje. Pozwala rowniez
 	// uzytkownikowi na zakonczenie programu - zwraca wtedy wartosc logiczna false. W przeciwnym wypadku zwraca true.
 	bool AskUserAboutChange();
+	
+	//
+	//
+	void GenerateRandomGraphBasedOnProbability();
 
 
 private:
