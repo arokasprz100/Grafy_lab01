@@ -247,11 +247,6 @@ void GenerateRandomGraphBasedOnProbability(int vecrticesNumber, int probability)
 				adjacencyMatrix[i][j] = 1;
 				adjacencyMatrix[j][i] = 1;
 			}
-			else
-			{
-				adjacencyMatrix[i][j] = 0;
-				adjacencyMatrix[i][j] = 0;
-			}
 		}
 	}
 	
