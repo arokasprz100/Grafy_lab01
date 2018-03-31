@@ -42,8 +42,9 @@ public:
 	// uzytkownikowi na zakonczenie programu - zwraca wtedy wartosc logiczna false. W przeciwnym wypadku zwraca true.
 	bool AskUserAboutChange();
 	
-	//
-	//
+	// Funkcja generujaca graf losowy G(n, p) o zadanej liczbie wierzcholkow oraz prawdopodobienstwa wystapienia kazdej z krawedzi. 
+	// Jezeli drugi argument jest ujemny to zamieniony jest na liczbe przeciwna. Jesli jest wiekszy od 1, to traktowany jest jako procent.
+	// Natomiast gdy jest mniejszy od 1 i wiekszy od 0, to traktowany jest jako zwykle prawdopodobienstwo.
 	void GenerateRandomGraphBasedOnProbability(int vecrticesNumber, int probability);
 
 
