@@ -237,15 +237,37 @@ void GenerateRandomGraphBasedOnProbability(int vecrticesNumber, int probability)
 	int randomNumber;
 	std::vector<std::vector<int>> adjacencyMatrix(verticesNumber, std::vector<int>(verticesNumber, 0));
 	
-	for (unsigned i = 0; i < vecrticesNumber; ++i)
+	if(probability < 0)
+		probability = -probability;
+	
+	if(probability < 1)
 	{
-		for (unsigned j = i; j < vecrticesNumber; ++j)
+		for (unsigned i = 0; i < vecrticesNumber; ++i)
 		{
-			randomNumber = rand() % 100 + 1;
-			if(randomNumber <= probability)
+			for (unsigned j = i; j < vecrticesNumber; ++j)
 			{
-				adjacencyMatrix[i][j] = 1;
-				adjacencyMatrix[j][i] = 1;
+				randomNumber = ((double) rand() / (RAND_MAX));
+				if(randomNumber <= probability)
+				{
+					adjacencyMatrix[i][j] = 1;
+					adjacencyMatrix[j][i] = 1;
+				}
+			}
+		}
+	}
+	
+	else
+	{
+		for (unsigned i = 0; i < vecrticesNumber; ++i)
+		{
+			for (unsigned j = i; j < vecrticesNumber; ++j)
+			{
+				randomNumber = rand() % 100 + 1;
+				if(randomNumber <= probability)
+				{
+					adjacencyMatrix[i][j] = 1;
+					adjacencyMatrix[j][i] = 1;
+				}
 			}
 		}
 	}
