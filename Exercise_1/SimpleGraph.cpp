@@ -231,7 +231,7 @@ bool SimpleGraph::AskUserAboutChange()
 	return true;
 }
 
-void GenerateRandomGraphBasedOnProbability(int vecrticesNumber, int probability)
+void SimpleGraph::GenerateRandomGraphBasedOnProbability(int verticesNumber, int probability)
 {
 	srand (time(NULL));
 	int randomNumber;
@@ -242,9 +242,9 @@ void GenerateRandomGraphBasedOnProbability(int vecrticesNumber, int probability)
 	
 	if(probability < 1)
 	{
-		for (unsigned i = 0; i < vecrticesNumber; ++i)
+		for (int i = 0; i < verticesNumber; ++i)
 		{
-			for (unsigned j = i; j < vecrticesNumber; ++j)
+			for (int j = i; j < verticesNumber; ++j)
 			{
 				randomNumber = ((double) rand() / (RAND_MAX));
 				if(randomNumber <= probability)
@@ -258,9 +258,9 @@ void GenerateRandomGraphBasedOnProbability(int vecrticesNumber, int probability)
 	
 	else
 	{
-		for (unsigned i = 0; i < vecrticesNumber; ++i)
+		for (int i = 0; i < verticesNumber; ++i)
 		{
-			for (unsigned j = i; j < vecrticesNumber; ++j)
+			for (int j = i; j < verticesNumber; ++j)
 			{
 				randomNumber = rand() % 100 + 1;
 				if(randomNumber <= probability)
@@ -272,6 +272,6 @@ void GenerateRandomGraphBasedOnProbability(int vecrticesNumber, int probability)
 		}
 	}
 	
-	m_storedRepresentation=adjacencyList;
+	m_storedRepresentation=adjacencyMatrix;
 	m_representation='a';
 }
