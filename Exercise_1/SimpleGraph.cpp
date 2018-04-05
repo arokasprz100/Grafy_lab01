@@ -290,36 +290,20 @@ void SimpleGraph::GenerateRandomGraphBasedOnProbability(int verticesNumber, int 
 {
 	srand (time(NULL));
 	int randomNumber;
+	bool randomize = true; 
 	std::vector<std::vector<int>> adjacencyMatrix(verticesNumber, std::vector<int>(verticesNumber, 0));
-	
-	if(probability < 0)
-		probability = -probability;
-	
-	if(probability < 1)
-	{
-		for (int i = 0; i < verticesNumber; ++i)
-		{
-			for (int j = i; j < verticesNumber; ++j)
-			{
-				randomNumber = ((double) rand() / (RAND_MAX));
-				if(randomNumber <= probability)
-				{
-					adjacencyMatrix[i][j] = 1;
-					adjacencyMatrix[j][i] = 1;
-				}
-			}
-		}
-	}
 
+	if(!probability)
+		randomize = false;
 
-	else
+	if(randomize)
 	{
 		for (int i = 0; i < verticesNumber; ++i)
 		{
 			for (int j = i; j < verticesNumber; ++j)
 			{
 				randomNumber = rand() % 100 + 1;
-				if(randomNumber <= probability)
+				if((randomNumber <= probability) && (i != j))
 				{
 					adjacencyMatrix[i][j] = 1;
 					adjacencyMatrix[j][i] = 1;
