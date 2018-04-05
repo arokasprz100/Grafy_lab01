@@ -267,7 +267,7 @@ void SimpleGraph::GenerateRandomGraphBasedOnDensity(int verticesNumber, double d
 				{
 					double probability=(double)(std::rand()%(maxEdges+1))/(double)maxEdges;
 					double rest=((double)maxEdges-edgesNumber)/(double)maxEdges;
-					if(probability>=rest && adjacencyMatrix[i][j] == 0)
+					if(probability>=rest && adjacencyMatrix[i][j] == 0 && edgesNumber>0)
 					{
 						adjacencyMatrix[i][j] = 1;
 						adjacencyMatrix[j][i] = 1;
