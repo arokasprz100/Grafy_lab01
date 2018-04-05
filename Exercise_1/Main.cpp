@@ -37,8 +37,12 @@ int main()
 	{
 		std::vector<std::vector<int>> temp;
 		storedGraph.AddGraphToStorage(temp, 'a');
-		storedGraph->GenerateRandomGraphBasedOnProbability( 5, 5);
-		storedGraph->GenerateRandomGraphBasedOnDensity( 5, 5);
+		int numberOfVertices, numberOfEdges;
+		std::cout<<"Enter number of vertices: ";
+		std::cin>>numberOfVertices;
+		std::cout<<"Enter number of edges: ";
+		std::cin>>numberOfEdges;
+		storedGraph->GenerateRandomGraphBasedOnDensity( numberOfVertices, numberOfEdges);
 	}
 	else 
 	{
