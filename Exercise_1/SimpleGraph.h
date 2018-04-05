@@ -43,8 +43,7 @@ public:
 	bool AskUserAboutChange();
 	
 	// Funkcja generujaca graf losowy G(n, p) o zadanej liczbie wierzcholkow oraz prawdopodobienstwa wystapienia kazdej z krawedzi. 
-	// Jezeli drugi argument jest ujemny to zamieniony jest na liczbe przeciwna. Jesli jest wiekszy od 1, to traktowany jest jako procent.
-	// Natomiast gdy jest mniejszy od 1 i wiekszy od 0, to traktowany jest jako zwykle prawdopodobienstwo.
+	// Drugi argument traktowany jest jako procent. Na podstawie losowanych liczb generuje się nowe polaczenia w grafie.
 	void GenerateRandomGraphBasedOnProbability(int verticesNumber, int probability);
 
 	// Funkcja generujaca graf losowy G(n, l) o zadanej liczbie wierzcholkow oraz gestosci. Jeśli drugi argument jest liczba
