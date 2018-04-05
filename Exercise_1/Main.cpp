@@ -48,7 +48,7 @@ int main()
 	{
 		std::vector<std::vector<int>> temp;
 		storedGraph.AddGraphToStorage(temp, 'a');
-		storedGraph->GenerateRandomGraphBasedOnProbability( 5, 0.01);
+		storedGraph->GenerateRandomGraphBasedOnProbability(5, 50);
 
 	}
 	
