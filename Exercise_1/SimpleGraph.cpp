@@ -1,5 +1,8 @@
 #include "SimpleGraph.h"
 
+#include <stdlib.h>     
+#include <time.h>  
+
 SimpleGraph::SimpleGraph(std::vector<std::vector<int>> inputFromFile, char typeOfRepresentation)
 {
 	m_storedRepresentation = inputFromFile;
@@ -274,6 +277,58 @@ void SimpleGraph::GenerateRandomGraphBasedOnDensity(int verticesNumber, double d
 			}
 		}
 	}
+
+	
 	m_storedRepresentation=adjacencyMatrix;
 	m_representation='a';
 }
+
+
+
+
+void SimpleGraph::GenerateRandomGraphBasedOnProbability(int verticesNumber, int probability)
+{
+	srand (time(NULL));
+	int randomNumber;
+	std::vector<std::vector<int>> adjacencyMatrix(verticesNumber, std::vector<int>(verticesNumber, 0));
+	
+	if(probability < 0)
+		probability = -probability;
+	
+	if(probability < 1)
+	{
+		for (int i = 0; i < verticesNumber; ++i)
+		{
+			for (int j = i; j < verticesNumber; ++j)
+			{
+				randomNumber = ((double) rand() / (RAND_MAX));
+				if(randomNumber <= probability)
+				{
+					adjacencyMatrix[i][j] = 1;
+					adjacencyMatrix[j][i] = 1;
+				}
+			}
+		}
+	}
+
+
+	else
+	{
+		for (int i = 0; i < verticesNumber; ++i)
+		{
+			for (int j = i; j < verticesNumber; ++j)
+			{
+				randomNumber = rand() % 100 + 1;
+				if(randomNumber <= probability)
+				{
+					adjacencyMatrix[i][j] = 1;
+					adjacencyMatrix[j][i] = 1;
+				}
+			}
+		}
+	}
+	
+	m_storedRepresentation=adjacencyMatrix;
+	m_representation='a';
+}
+				
