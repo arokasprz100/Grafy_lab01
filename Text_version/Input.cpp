@@ -51,46 +51,47 @@ bool Input::CheckIfFileExists()
 }
 
 
-/// TODO: Arek: clean code 
+
 bool Input::GetInputFromFile(GraphStorage& storage)
 {
 	char fileType;
 	m_inputFile >> fileType;
 	std::cout<<fileType<<std::endl;
-	if (fileType != 'l' and fileType != 'i' and fileType != 'a')
+	
+	if (fileType != 'l' and fileType != 'i' and fileType != 'a') /// check format
 		return false;
+
 	std::vector<std::vector<int>> input;
 	std::string lineFromFile = "";
-	for (int i=0; i<2; ++i)
-		getline(m_inputFile, lineFromFile);
+
+	/// ignore empty lines in file
+	getline(m_inputFile, lineFromFile);
+	getline(m_inputFile, lineFromFile);
 	
-	int lineNumber = 0;
+	int lineNumber = 0; /// line counter
 	while (std::getline(m_inputFile, lineFromFile))
 	{
-		if (lineFromFile=="" or lineFromFile=="\n")
+		if (lineFromFile=="" or lineFromFile=="\n") /// check if file has ended
 			break;
 
 		input.emplace_back();
 
 		std::stringstream stream(lineFromFile);
-		while (true)
+		while (true) /// read values from line
 		{
 			int value;
 			stream>>value;
 			if(!stream)
       			break;
-      		input.at(lineNumber).push_back(value);
-
+      		input.at(lineNumber).push_back(value); /// add values to vector
 		}
-
-		lineNumber++;
-		
+		lineNumber++; /// increase line counter
 	}
 
 	storage.AddGraphToStorage(input, fileType);
 	m_inputFile.close();
 
-	return true;
+	return true; /// everything was correct
 	
 }
 
